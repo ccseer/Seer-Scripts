@@ -4,8 +4,11 @@ from pathlib import Path
 
 __save_path = os.path.join(Path.home(), "Downloads")
 
+# script_info() or SCRIPT_INFO should be provided
+# def script_info():
+# return SCRIPT_INFO
 
-PLUGIN_INFO = {
+SCRIPT_INFO = {
     "name": "unzip",
     # 0: preview
     # 1: button in control bar
