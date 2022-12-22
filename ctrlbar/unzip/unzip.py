@@ -15,7 +15,7 @@ SCRIPT_INFO = {
     # 2: property view
     "type": 1,
     # extensions: will show the button when matched
-    "extension": ["zip", "rar", "7z"],
+    "extensions": ["zip", "rar", "7z"],
     # unzip.py -e "/path/to/7z.exe" -i "/path/to/z.zip" -o "/path/to/save/"
     # ${7z}: https://github.com/ccseer/Seer/wiki/7.-Scripts
     "arguments": ["-e", "${7z}", "-i", "${input}", "-o", __save_path, "-w"],
