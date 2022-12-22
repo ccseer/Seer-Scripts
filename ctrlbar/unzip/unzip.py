@@ -6,7 +6,6 @@ __save_path = os.path.join(Path.home(), "Downloads")
 
 
 PLUGIN_INFO = {
-    # cannot be empty
     "name": "unzip",
     # 0: preview
     # 1: button in control bar
@@ -17,7 +16,7 @@ PLUGIN_INFO = {
     # unzip.py -e "/path/to/7z.exe" -i "/path/to/z.zip" -o "/path/to/save/"
     # ${7z}: https://github.com/ccseer/Seer/wiki/7.-Scripts
     "arguments": ["-e", "${7z}", "-i", "${input}", "-o", __save_path, "-w"],
-    # optional
+    # optional below
     "author": "Corey",
     "version": "1.0.0",
     "description": "unzip zip file here",
