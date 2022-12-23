@@ -18,7 +18,7 @@ SCRIPT_INFO = {
     "extensions": ["zip", "rar", "7z"],
     # unzip.py -e "/path/to/7z.exe" -i "/path/to/z.zip" -o "/path/to/save/"
     # ${7z}: https://github.com/ccseer/Seer/wiki/7.-Scripts
-    "arguments": ["-e", "${7z}", "-i", "${input}", "-o", __save_path, "-w"],
+    "arguments": ["-e", "${7z}", "-i", "${input_file}", "-o", __save_path, "-w"],
     # optional below
     "author": "Corey",
     "version": "1.0.0",
