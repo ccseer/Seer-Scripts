@@ -20,6 +20,7 @@ SCRIPT_INFO = {
     "author": "Corey",
     "version": "1.0.0",
     "description": "unzip archive file here",
+    # controls(type==1) only
     # "icon_path":""
 }
 
@@ -43,7 +44,6 @@ def parse_arg():
     parser.add_argument(
         "-w", help="whether open output window", required=False, action="store_true"
     )
-    # parser.print_help()
     args = parser.parse_args()
     return vars(args)
 
