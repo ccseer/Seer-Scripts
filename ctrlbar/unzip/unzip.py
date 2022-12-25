@@ -4,9 +4,6 @@ from pathlib import Path
 
 __save_path = os.path.join(Path.home(), "Downloads")
 
-# script_info() or SCRIPT_INFO should be provided
-# def script_info():
-# return SCRIPT_INFO
 
 SCRIPT_INFO = {
     "name": "unzip",
@@ -22,9 +19,14 @@ SCRIPT_INFO = {
     # optional below
     "author": "Corey",
     "version": "1.0.0",
-    "description": "unzip zip file here",
+    "description": "unzip archive file here",
     # "icon_path":""
 }
+
+
+def script_info():
+    # one of script_info() and SCRIPT_INFO should be provided
+    return SCRIPT_INFO
 
 
 def parse_arg():
@@ -70,8 +72,6 @@ if __name__ == "__main__":
     # if os.path.exists(output_dir) is False:
     #     output_dir = __save_path
 
-    # p = r"C:\Program Files\WindowsApps\CNABA5E861-AC2A-4523-B3C1.Seer-AWindowsQuickLookTo_3.1.1.0_neutral__p7t0z30wh4868\Seer\plugins\7z.exe"
-    # p = r"C:\Program Files (x86)\Seer\plugins\7z.exe"
     ret = subprocess.run([path_7z, "x", input_path, "-r", "-y", "-o" + output_dir])
     if ret.returncode == 0 and args["w"] is True:
         subprocess.Popen(["explorer", os.path.normpath(output_dir)])
