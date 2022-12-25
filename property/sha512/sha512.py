@@ -23,7 +23,13 @@ def save_data(data, output_path):
 
     data_map = {}
     # SHA512 is for first column in Property View
+    # the value can only be str type
     data_map["SHA512"] = str(data)
+    # nested
+    # data_map_nested = {}
+    # data_map_nested["nested_1"] = "nested_1_v"
+    # data_map_nested["nested_2"] = "nested_2_v"
+    # data_map["nested_title"] = data_map_nested
 
     if output_path.lower().endswith(".json") == False:
         output_path += ".json"
