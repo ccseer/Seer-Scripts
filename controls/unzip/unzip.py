@@ -8,8 +8,8 @@ __save_path = os.path.join(Path.home(), "Downloads")
 SCRIPT_INFO = {
     "name": "unzip",
     # 0: preview
-    # 1: button in control bar
-    # 2: property view
+    # 1: controls
+    # 2: property
     "type": 1,
     # extensions: will show the button when matched
     "extensions": ["zip", "rar", "7z"],
