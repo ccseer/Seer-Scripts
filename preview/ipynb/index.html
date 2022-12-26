@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <script src="assets/es5-shim.min.js"></script>
+    <script src="assets/marked.min.js"></script>
+    <script src="assets/purify.min.js"></script>
+    <script src="assets/ansi_up.min.js"></script>
+    <script src="assets/prism.min.js"></script>
+    <script src="assets/katex.min.js"></script>
+    <script src="assets/katex-auto-render.min.js"></script>
+    <script src="assets/notebook.min.js"></script>
+    <link rel="stylesheet" href="assets/katex.min.css" />
+    <link rel="stylesheet" href="assets/prism.css" />
+    <link rel="stylesheet" href="assets/notebook.css" />
+    <link rel="stylesheet" href="assets/nbpreview.css" />
+</head>
+
+<body>
+    <div id="main">
+        <div id="notebook-holder"></div>
+    </div>
+</body>
+<script>
+    var render_notebook = function (ipynb) {
+        var $holder = document.querySelector("#notebook-holder");
+        var notebook = nb.parse(JSON.parse(ipynb));
+        while ($holder.hasChildNodes()) {
+            $holder.removeChild($holder.lastChild);
+        }
+        $holder.appendChild(notebook.render());
+        Prism.highlightAll();
+    };
+
+    window.addEventListener('pywebviewready', function () {
+        window.pywebview.api.get_file_contents().then(function (response) {
+            render_notebook(response);
+        })
+    })
+</script>
+
+</html>
