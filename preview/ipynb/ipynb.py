@@ -2,13 +2,9 @@ SCRIPT_INFO = {
     "name": "ipynb",
     "type": 0,
     "extensions": ["ipynb"],
-    "arguments": ["-i", "${input_file}", "-o"],
-    # optional below
-    "author": "Corey",
+    "arguments": ["-i", "${input_file}", "${oit}"],
     "version": "1.0.0",
-    "description": "unzip archive file here",
-    # controls(type==1) only
-    # "icon_path":""
+    "description": "jupyter notebook, https://github.com/jsvine/notebookjs",
 }
 
 
