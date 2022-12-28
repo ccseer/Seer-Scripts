@@ -51,8 +51,6 @@ def sendMsg2Seer(json_str):
     logging.info("sendMsg2Seer:" + json_str)
 
     class COPYDATASTRUCT(ctypes.Structure):
-        import ctypes.wintypes
-
         _fields_ = [
             ("dwData", ctypes.wintypes.LPARAM),
             ("cbData", ctypes.wintypes.DWORD),
@@ -80,3 +78,19 @@ def sendMsg2Seer(json_str):
     logging.info("SendMessage done: " + str(ret))
 
     return True
+
+
+# def getWindowPos():
+#     import ctypes
+#     import ctypes.wintypes
+
+#     FindWindowEx = ctypes.windll.user32.FindWindowExW
+#     hwnd = FindWindowEx(None, None, SEER_CLASSNAME, None)
+#     if hwnd == 0:
+#         logging.error("hwnd==0")
+#         return False
+
+#     GetWindowRect = ctypes.windll.user32.GetWindowRect
+#     LPRECT = ctypes.wintypes.RECT()
+#     GetWindowRect(hwnd, ctypes.byref(LPRECT))
+#     return (LPRECT.left, LPRECT.top)

@@ -42,7 +42,7 @@ class Api:
 
         self.wnd.show()
         logging.info("wnd.show")
-
+        
         # msg tests
         if False:
             data = {}
@@ -52,7 +52,7 @@ class Api:
             data = json.dumps(data)
             if pyseer.sendMsg2Seer(data) == False:
                 logging.info("what's going on?")
-            
+
             data = {}
             data[pyseer.SERR_MSG_KEY_WID] = self.__wid
             data[pyseer.SERR_MSG_KEY_SUB_ID] = pyseer.SEER_OIT_SUB_W32_WAGGLE
@@ -98,6 +98,8 @@ if __name__ == "__main__":
         easy_drag=False,
         x=-10000,
         y=-10000,
+        width=400,
+        height=300,
     )
     logging.info("create_window")
     api.wnd = wnd
