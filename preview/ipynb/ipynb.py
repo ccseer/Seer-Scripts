@@ -86,7 +86,13 @@ if __name__ == "__main__":
     api = Api(args[0], args[1])
 
     wnd = webview.create_window(
-        "Seer", js_api=api, url="index.html", frameless=True, x=-1000, y=-1000
+        "Seer",
+        js_api=api,
+        url="index.html",
+        text_select=True,
+        frameless=True,
+        x=-1000,
+        y=-1000,
     )
     logging.info("create_window")
     api.wnd = wnd
