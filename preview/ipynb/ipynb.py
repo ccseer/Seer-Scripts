@@ -43,13 +43,15 @@ class Api:
         self.wnd.show()
         logging.info("wnd.show")
 
-        # data = {}
-        # data[pyseer.SERR_MSG_KEY_WID] = self.__wid
-        # data[pyseer.SERR_MSG_KEY_SUB_ID] = pyseer.SEER_OIT_SUB_W32_TOAST
-        # data[pyseer.SERR_MSG_KEY_TOAST] = "Hello, thank you, thank you very much"
-        # data = json.dumps(data)
-        # if pyseer.sendMsg2Seer(data) == False:
-        #     logging.info("what's going on?")
+        # toast msg test
+        if False:
+            data = {}
+            data[pyseer.SERR_MSG_KEY_WID] = self.__wid
+            data[pyseer.SERR_MSG_KEY_SUB_ID] = pyseer.SEER_OIT_SUB_W32_TOAST
+            data[pyseer.SERR_MSG_KEY_TOAST] = "Hello, thank you, thank you very much"
+            data = json.dumps(data)
+            if pyseer.sendMsg2Seer(data) == False:
+                logging.info("what's going on?")
 
 
 def parse_arg():
