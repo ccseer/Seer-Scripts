@@ -12,6 +12,7 @@ SEER_CLASSNAME = "SeerWindowClass"
 
 SERR_MSG_KEY_WID = "window_index"
 SERR_MSG_KEY_SUB_ID = "msg_sub_id"
+SERR_MSG_KEY_TOAST = "toast_text"
 
 # win32con.WM_COPYDATA
 WIN32_COPYDATA_MSG = 74
