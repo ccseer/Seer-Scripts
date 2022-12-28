@@ -77,8 +77,10 @@ if __name__ == "__main__":
         url="index.html",
         text_select=True,
         frameless=True,
-        x=-1000,
-        y=-1000,
+        resizable=True,
+        easy_drag=False,
+        x=-10000,
+        y=-10000,
     )
     logging.info("create_window")
     api.wnd = wnd
