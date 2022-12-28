@@ -28,31 +28,17 @@ class Api:
             return f.read()
 
     def on_loaded(self):
-        import ctypes
-        import ctypes.wintypes
         import json
 
         logging.info("on_loaded")
-        FindWindowEx = ctypes.windll.user32.FindWindowExW
-        hwnd = FindWindowEx(None, None, pyseer.SEER_CLASSNAME, None)
-        if hwnd == 0:
-            logging.error("hwnd==0")
-            self.wnd.destroy()
-            sys.exit(-1)
 
-        logging.info(hwnd)
-        cds = pyseer.COPYDATASTRUCT()
-        cds.dwData = pyseer.SEER_OIT_MSG_W32
         data = {}
         data[pyseer.SERR_MSG_KEY_WID] = self.__wid
         data[pyseer.SERR_MSG_KEY_SUB_ID] = pyseer.SEER_OIT_SUB_W32_LOAD_OK
         data = json.dumps(data)
-        logging.info(data)
-        cds.cbData = ctypes.sizeof(ctypes.create_unicode_buffer(data))
-        cds.lpData = ctypes.c_wchar_p(data)
-        SendMessage = ctypes.windll.user32.SendMessageW
-        SendMessage(hwnd, pyseer.WIN32_COPYDATA_MSG, None, ctypes.byref(cds))
-        logging.info("SendMessage")
+        if pyseer.sendMsg2Seer(data) == False:
+            self.wnd.destroy()
+            sys.exit(-1)
 
         self.wnd.show()
         logging.info("wnd.show")

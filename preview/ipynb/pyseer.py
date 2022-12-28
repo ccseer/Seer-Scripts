@@ -1,4 +1,4 @@
-import ctypes
+import logging
 
 SEER_OIT_MSG_W32 = 6500
 SEER_OIT_SUB_W32_LOAD_ERR = 6501
@@ -25,30 +25,57 @@ SCRIPT_INFO = {
     "description": "jupyter notebook\nhttps://github.com/jsvine/notebookjs",
 }
 
-class COPYDATASTRUCT(ctypes.Structure):
-    import ctypes.wintypes
-
-    _fields_ = [
-        ("dwData", ctypes.wintypes.LPARAM),
-        ("cbData", ctypes.wintypes.DWORD),
-        ("lpData", ctypes.c_wchar_p),
-    ]
-
 
 def init_log(filename):
-    import logging
     import os
 
-    LOG_FILENAME = filename
-    if os.path.exists(LOG_FILENAME):
+    if os.path.exists(filename):
         try:
-            os.remove(LOG_FILENAME)
+            os.remove(filename)
         except:
             return
-    
+
     logging.basicConfig(
-        filename=LOG_FILENAME,
-        level=logging.INFO,
+        filename=filename,
+        level=logging.DEBUG,
         format="[%(asctime)s][%(levelname)s][%(name)s] %(message)s",
     )
     logging.info("logging started")
+
+
+def sendMsg2Seer(json_str):
+    import ctypes
+    import ctypes.wintypes
+
+    logging.info("sendMsg2Seer:" + json_str)
+
+    class COPYDATASTRUCT(ctypes.Structure):
+        import ctypes.wintypes
+
+        _fields_ = [
+            ("dwData", ctypes.wintypes.LPARAM),
+            ("cbData", ctypes.wintypes.DWORD),
+            ("lpData", ctypes.c_wchar_p),
+        ]
+
+    # prepare data
+    FindWindowEx = ctypes.windll.user32.FindWindowExW
+    hwnd = FindWindowEx(None, None, SEER_CLASSNAME, None)
+    if hwnd == 0:
+        logging.error("hwnd==0")
+        return False
+
+    logging.info(hwnd)
+
+    cds = COPYDATASTRUCT()
+    cds.dwData = SEER_OIT_MSG_W32
+    logging.info(json_str)
+    cds.cbData = ctypes.sizeof(ctypes.create_unicode_buffer(json_str))
+    cds.lpData = ctypes.c_wchar_p(json_str)
+
+    # send data
+    SendMessage = ctypes.windll.user32.SendMessageW
+    SendMessage(hwnd, WIN32_COPYDATA_MSG, None, ctypes.byref(cds))
+    logging.info("SendMessage")
+
+    return True
