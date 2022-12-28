@@ -40,9 +40,10 @@ class Api:
             self.wnd.destroy()
             sys.exit(-1)
 
-        self.wnd.show()
-        logging.info("wnd.show")
-        
+        # no need
+        # self.wnd.show()
+        # logging.info("wnd.show")
+
         # msg tests
         if False:
             data = {}
