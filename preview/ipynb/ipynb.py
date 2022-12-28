@@ -43,7 +43,7 @@ class Api:
         self.wnd.show()
         logging.info("wnd.show")
 
-        # toast msg test
+        # msg tests
         if False:
             data = {}
             data[pyseer.SERR_MSG_KEY_WID] = self.__wid
@@ -52,6 +52,13 @@ class Api:
             data = json.dumps(data)
             if pyseer.sendMsg2Seer(data) == False:
                 logging.info("what's going on?")
+            
+            data = {}
+            data[pyseer.SERR_MSG_KEY_WID] = self.__wid
+            data[pyseer.SERR_MSG_KEY_SUB_ID] = pyseer.SEER_OIT_SUB_W32_WAGGLE
+            data = json.dumps(data)
+            if pyseer.sendMsg2Seer(data) == False:
+                logging.info("I can WAGGLE!!!")
 
 
 def parse_arg():
