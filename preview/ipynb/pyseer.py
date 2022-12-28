@@ -65,7 +65,7 @@ def sendMsg2Seer(json_str):
         logging.error("hwnd==0")
         return False
 
-    logging.info(hwnd)
+    logging.info("seer hwnd: " + str(hwnd))
 
     cds = COPYDATASTRUCT()
     cds.dwData = SEER_OIT_MSG_W32
@@ -75,7 +75,7 @@ def sendMsg2Seer(json_str):
 
     # send data
     SendMessage = ctypes.windll.user32.SendMessageW
-    SendMessage(hwnd, WIN32_COPYDATA_MSG, None, ctypes.byref(cds))
-    logging.info("SendMessage")
+    ret = SendMessage(hwnd, WIN32_COPYDATA_MSG, None, ctypes.byref(cds))
+    logging.info("SendMessage done: " + str(ret))
 
     return True
