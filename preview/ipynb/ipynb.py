@@ -45,7 +45,7 @@ class Api:
         cds.dwData = pyseer.SEER_OIT_MSG_W32
         data = {}
         data[pyseer.SERR_MSG_KEY_WID] = self.__wid
-        data[pyseer.SERR_MSG_KEY_SUB_ID] = pyseer.SEER_OIT_SUB_LOAD_OK
+        data[pyseer.SERR_MSG_KEY_SUB_ID] = pyseer.SEER_OIT_SUB_W32_LOAD_OK
         data = json.dumps(data)
         logging.info(data)
         cds.cbData = ctypes.sizeof(ctypes.create_unicode_buffer(data))
