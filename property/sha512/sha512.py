@@ -1,5 +1,3 @@
-# https://www.quickprogrammingtips.com/python/how-to-calculate-sha256-hash-of-a-file-in-python.html
-
 SCRIPT_INFO = {
     "name": "sha512",
     "type": 2,
@@ -9,6 +7,8 @@ SCRIPT_INFO = {
 
 
 def sha512(input_path):
+    # https://www.quickprogrammingtips.com/python/how-to-calculate-sha256-hash-of-a-file-in-python.html
+
     import hashlib
 
     sha256_hash = hashlib.sha256()

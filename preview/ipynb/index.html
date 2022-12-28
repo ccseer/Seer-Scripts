@@ -38,6 +38,7 @@
     window.addEventListener('pywebviewready', function () {
         window.pywebview.api.get_file_contents().then(function (response) {
             render_notebook(response);
+            window.pywebview.api.on_loaded()
         })
     })
 </script>
