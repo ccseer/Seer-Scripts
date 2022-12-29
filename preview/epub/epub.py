@@ -1,18 +1,57 @@
-# based on https://github.com/futurepress/epub.js
+"""
+what this script does:
+    1. read index.html
+    2. replace ${input_file} / jszip-3.10.1.min.js / main.css / epub-0.3.93.min.js
+    3. save file as ${output_file}
+"""
 
 
 SCRIPT_INFO = {
     "name": "epub",
     "type": 0,
     "extensions": ["epub"],
-    "arguments": ["${input_file}", "${output_file}.html", "*SEER_NO_CACHE*"],
+    "arguments": [
+        "-i",
+        "${input_file}",
+        "-o",
+        "${output_file}.html",
+        "*SEER_NO_CACHE*",
+    ],
     "version": "1.0.0",
 }
 
-# replace jszip-3.10.1.min.js
-# replace main.css
-# replace epub-0.3.93.min.js
-# replace ${input_file}
-# save file as ${output_file}
+
+def parse_arg():
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-i", help="input file path", required=True)
+    parser.add_argument("-o", help="output dir path", required=True)
+    args = parser.parse_args()
+    return vars(args)
+
+
 if __name__ == "__main__":
-    pass
+    import os
+
+    args = parse_arg()
+    print("args", args)
+
+    cur_dir = os.path.dirname(os.path.abspath(__file__))
+    assets_dir = os.path.join(cur_dir, "assets")
+
+    val = ""
+    with open(os.path.join(assets_dir, "index.html"), "r") as f:
+        var = f.read()
+
+    val = (
+        var.replace(
+            "PLACEHOLDER_ZIPJS", os.path.join(assets_dir, "jszip-3.10.1.min.js")
+        )
+        .replace("PLACEHOLDER_EPUBJS", os.path.join(assets_dir, "epub-0.3.93.min.js"))
+        .replace("PLACEHOLDER_CSS", os.path.join(assets_dir, "main.css"))
+        .replace("PLACEHOLDER_INPUT", args["i"])
+    )
+
+    with open(args["o"], "w") as f:
+        f.write(val)

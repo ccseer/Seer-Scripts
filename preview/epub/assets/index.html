@@ -3,9 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="jszip-3.10.1.min.js"></script>
-    <script src="epub-0.3.93.min.js"></script>
-    <link rel="stylesheet" href="main.css" />
+    <script src="file:///PLACEHOLDER_ZIPJS"></script>
+    <script src="file:///PLACEHOLDER_EPUBJS"></script>
+    <link rel="stylesheet" href="file:///PLACEHOLDER_CSS" />
 </head>
 
 <body>
@@ -25,8 +25,7 @@
 
     <script>
         // Load the opf
-        // var book = ePub("file:///@PLACEHOLDER_FILEPATH@");
-        var book = ePub("file:///C:/D/2.epub");
+        var book = ePub("file:///PLACEHOLDER_INPUT");
         var rendition = book.renderTo("viewer", {
             flow: "scrolled-doc",
             width: '100%',
