@@ -10,7 +10,15 @@ import pyseer
 
 
 def script_info():
-    return pyseer.SCRIPT_INFO
+    SCRIPT_INFO = {
+        "name": "ipynb",
+        "type": 0,
+        "extensions": ["ipynb"],
+        "arguments": ["${oit}"],
+        "version": "1.0.0",
+        "description": "jupyter notebook\nhttps://github.com/jsvine/notebookjs",
+    }
+    return SCRIPT_INFO
 
 
 class Api:

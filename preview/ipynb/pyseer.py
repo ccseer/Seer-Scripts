@@ -17,15 +17,6 @@ SERR_MSG_KEY_TOAST = "toast_text"
 # win32con.WM_COPYDATA
 WIN32_COPYDATA_MSG = 74
 
-SCRIPT_INFO = {
-    "name": "ipynb",
-    "type": 0,
-    "extensions": ["ipynb"],
-    "arguments": ["${oit}"],
-    "version": "1.0.0",
-    "description": "jupyter notebook\nhttps://github.com/jsvine/notebookjs",
-}
-
 
 def init_log(filename):
     import os
