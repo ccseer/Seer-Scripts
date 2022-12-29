@@ -10,13 +10,7 @@ SCRIPT_INFO = {
     "name": "epub",
     "type": 0,
     "extensions": ["epub"],
-    "arguments": [
-        "-i",
-        "${input_file}",
-        "-o",
-        "${output_file}.html",
-        "*SEER_NO_CACHE*",
-    ],
+    "arguments": ["-i", "${input_file}", "-o", "${output_file}.html"],
     "version": "1.0.0",
 }
 
