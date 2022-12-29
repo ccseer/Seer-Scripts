@@ -5,7 +5,6 @@ what this script does:
     3. save file as ${output_file}
 """
 
-
 SCRIPT_INFO = {
     "name": "epub",
     "type": 0,
@@ -29,23 +28,25 @@ if __name__ == "__main__":
     import os
 
     args = parse_arg()
-    print("args", args)
-
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     assets_dir = os.path.join(cur_dir, "assets")
 
     val = ""
-    with open(os.path.join(assets_dir, "index.html"), "r") as f:
-        var = f.read()
+    with open(os.path.join(assets_dir, "index.html"), "r", encoding="utf-8") as f:
+        val = f.read()
 
-    val = (
-        var.replace(
-            "PLACEHOLDER_ZIPJS", os.path.join(assets_dir, "jszip-3.10.1.min.js")
-        )
-        .replace("PLACEHOLDER_EPUBJS", os.path.join(assets_dir, "epub-0.3.93.min.js"))
-        .replace("PLACEHOLDER_CSS", os.path.join(assets_dir, "main.css"))
-        .replace("PLACEHOLDER_INPUT", args["i"])
+    val = val.replace(
+        "PLACEHOLDER_ZIPJS",
+        os.path.join(assets_dir, "jszip-3.10.1.min.js").replace("\\", "/"),
     )
+    val = val.replace(
+        "PLACEHOLDER_EPUBJS",
+        os.path.join(assets_dir, "epub-0.3.93.min.js").replace("\\", "/"),
+    )
+    val = val.replace(
+        "PLACEHOLDER_CSS", os.path.join(assets_dir, "main.css").replace("\\", "/")
+    )
+    val = val.replace("PLACEHOLDER_INPUT", args["i"].replace("\\", "/"))
 
-    with open(args["o"], "w") as f:
+    with open(args["o"], "w", encoding="utf-8") as f:
         f.write(val)
