@@ -55,17 +55,11 @@ if __name__ == "__main__":
     args = parse_arg()
 
     # this_py ${PLUGIN_INFO["arguments"]}
-    print("args", args)
 
     # this_py = sys.argv[0]
     path_7z = args["e"]
     input_path = args["i"]
     if os.path.exists(path_7z) is False or os.path.exists(input_path) is False:
-        print(
-            "file not found, path_7z: {0}, input_path: {1}".format(
-                os.path.exists(path_7z), os.path.exists(input_path)
-            )
-        )
         sys.exit(-1)
 
     output_dir = args["o"]

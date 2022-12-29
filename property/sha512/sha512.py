@@ -34,7 +34,6 @@ def save_data(data, output_path):
     if output_path.lower().endswith(".json") == False:
         output_path += ".json"
 
-    print(output_path)
     json_object = json.dumps(data_map)
     with open(output_path, "w") as f:
         f.write(json_object)
@@ -52,7 +51,6 @@ def parse_arg():
 
 if __name__ == "__main__":
     args = parse_arg()
-    print("args", args)
     val = sha512(args["i"])
     save_data(val, args["o"])
     exit(0)
