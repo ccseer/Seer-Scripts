@@ -26,12 +26,15 @@ def init_log(filename):
             os.remove(filename)
         except:
             return
-
-    logging.basicConfig(
-        filename=filename,
-        level=logging.DEBUG,
-        format="[%(asctime)s][%(levelname)s][%(name)s] %(message)s",
+    # encoding is added to logging.basicConfig after 3.8.x
+    # so we can't use it
+    log = logging.getLogger()
+    log.setLevel(logging.DEBUG)
+    handler = logging.FileHandler(filename, "w", "utf-8")
+    handler.setFormatter(
+        logging.Formatter("[%(asctime)s][%(levelname)s][%(name)s] %(message)s")
     )
+    log.addHandler(handler)
     logging.info("logging started")
 
 
@@ -57,6 +60,12 @@ def sendMsg2Seer(json_str):
 
     logging.info("seer hwnd: " + str(hwnd))
 
+    IsWindowVisible = ctypes.windll.user32.IsWindowVisible
+    is_visible = IsWindowVisible(hwnd)
+    logging.info("seer is_visible: " + str(is_visible))
+    if is_visible == 0:
+        return False
+
     cds = COPYDATASTRUCT()
     cds.dwData = SEER_OIT_MSG_W32
     logging.info(json_str)
@@ -80,7 +89,6 @@ def sendMsg2Seer(json_str):
 #     if hwnd == 0:
 #         logging.error("hwnd==0")
 #         return False
-
 #     GetWindowRect = ctypes.windll.user32.GetWindowRect
 #     LPRECT = ctypes.wintypes.RECT()
 #     GetWindowRect(hwnd, ctypes.byref(LPRECT))

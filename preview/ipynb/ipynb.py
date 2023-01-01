@@ -113,4 +113,5 @@ if __name__ == "__main__":
     logging.info("create_window")
     api.wnd = wnd
     logging.info("init")
+    # doesn't work when the path of python.exe contains anything other than english letters
     webview.start(hide_wnd, wnd)
