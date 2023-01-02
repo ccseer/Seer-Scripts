@@ -1,5 +1,3 @@
-### Wiki
-[Scripts](https://github.com/ccseer/Seer/wiki/7.-Scripts)
 
 ### Available Scripts
 
@@ -12,3 +10,12 @@
 #### Preview
 1. [ipynb](http://1218.io/seer/ipynb.zip)
 2. [epub](http://1218.io/seer/epub.zip)
+
+
+
+
+
+
+---
+
+[Wiki](https://github.com/ccseer/Seer/wiki/7.-Scripts)
