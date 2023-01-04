@@ -34,8 +34,8 @@ def save_data(data, output_path):
     if output_path.lower().endswith(".json") == False:
         output_path += ".json"
 
-    json_object = json.dumps(data_map)
-    with open(output_path, "w") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
+        json_object = json.dumps(data_map)
         f.write(json_object)
 
 

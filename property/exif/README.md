@@ -1,0 +1,1 @@
+[Supported File Types](https://exiftool.org/#supported)
