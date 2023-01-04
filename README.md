@@ -4,6 +4,8 @@
 #### Property
 1. [sha512](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/sha512.zip)
    - calculate the sha512 value
+1. [exif](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/exif.zip)
+   - read a lot of [meta](https://exiftool.org/) information for several formats
 
 #### Controls
 1. [unzip](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/unzip.zip)
