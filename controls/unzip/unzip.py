@@ -18,10 +18,10 @@ SCRIPT_INFO = {
     "arguments": ["-e", "${7z}", "-i", "${input_file}", "-o", __save_path, "-w"],
     # optional below
     "author": "Corey",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "unzip archive file here",
-    # controls(type==1) only
-    # "icon_path":""
+    # https://freeiconshop.com/icon/zip-icon-flat/
+    "icon_path": "icon.png",
 }
 
 
