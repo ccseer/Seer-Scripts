@@ -8,7 +8,7 @@
    - read a lot of [meta](https://exiftool.org/) information for several formats
 
 #### Controls
-1. [unzip](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/unzip.zip)
+1. [unzip-1.0.1](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/unzip-1.0.1.zip)
     - extract the archive file to certain folder
 
 #### Preview
