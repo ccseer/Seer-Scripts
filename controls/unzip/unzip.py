@@ -62,9 +62,8 @@ if __name__ == "__main__":
     if os.path.exists(path_7z) is False or os.path.exists(input_path) is False:
         sys.exit(-1)
 
-    output_dir = args["o"]
-    # if os.path.exists(output_dir) is False:
-    #     output_dir = __save_path
+    dist_folder = os.path.splitext(os.path.basename(input_path))[0]
+    output_dir = os.path.join(args["o"], dist_folder)
 
     ret = subprocess.run([path_7z, "x", input_path, "-r", "-y", "-o" + output_dir])
     if ret.returncode == 0 and args["w"] is True:
