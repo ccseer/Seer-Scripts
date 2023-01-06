@@ -10,7 +10,8 @@
 #### Controls
 1. [unzip-1.0.1](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/unzip-1.0.1.zip)
     - extract the archive file to certain folder
-
+2. [zipfolder](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/zipfolder.zip)
+    - save the folder as a zip file
 #### Preview
 1. [ipynb](https://github.com/ccseer/Seer-Scripts/releases/download/Scripts/ipynb.zip)
    - jupyter notebook format
