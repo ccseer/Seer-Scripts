@@ -1,15 +1,12 @@
-__author__ = 'corey'
+__author__ = "corey"
 
 # contributors:
 # ustcltx -- #https://github.com/ustcltx
 
-# This code is only for demonstration currently,
-# please use OIT plugin for practice.
-
 
 from win32com.client import DispatchEx
 
-w = ''
+w = ""
 
 
 def doc2pdf(input, output):
@@ -48,23 +45,23 @@ def vsd2pdf(input, output):
 
 def DispatchFun(path, out):
     p = path.lower()
-    if p.endswith('doc') or p.endswith('docx') or p.endswith('rtf'):
+    if p.endswith("doc") or p.endswith("docx") or p.endswith("rtf"):
         doc2pdf(path, out)
-    elif p.endswith('xls') or p.endswith('xlsx'):
+    elif p.endswith("xls") or p.endswith("xlsx"):
         excel2pdf(path, out)
-    elif p.endswith('ppt') or p.endswith('pptx'):
+    elif p.endswith("ppt") or p.endswith("pptx"):
         ppt2pdf(path, out)
-    elif p.endswith('vsd') or p.endswith('vsdx'):
+    elif p.endswith("vsd") or p.endswith("vsdx"):
         vsd2pdf(path, out)
     else:
-        print('Unknown format.')
+        print("Unknown format.")
 
 
 def main(path_in, path_out):
     import os
 
     if not os.path.exists(path_in):
-        print(path_in + ' not found.')
+        print(path_in + " not found.")
         return
 
     if not os.path.isabs(path_in):
@@ -84,16 +81,17 @@ def usage(execname):
     sys.exit()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     import sys
+
     if len(sys.argv) != 3:
         usage(sys.argv[0])
 
     path_input = sys.argv[1]
     path_output = sys.argv[2].lower()
 
-    if path_output.endswith('.pdf') is False:
-        path_output = sys.argv[2] + '.pdf'
+    if path_output.endswith(".pdf") is False:
+        path_output = sys.argv[2] + ".pdf"
 
     rc = main(path_input, path_output)
 

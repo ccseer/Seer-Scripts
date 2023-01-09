@@ -1,7 +1,8 @@
 # coding=utf-8
 
-import pyexcel as p
 import sys
+
+import pyexcel as p
 
 
 def convert(path_input, path_output):
