@@ -1,33 +1,29 @@
 import os
-import sys
-from pathlib import Path
-
-__save_path = os.path.join(Path.home(), "Downloads")
-
-
-SCRIPT_INFO = {
-    "name": "unzip",
-    # 0: preview
-    # 1: controls
-    # 2: property
-    "type": 1,
-    # extensions: will show the button when matched
-    "extensions": ["zip", "rar", "7z"],
-    # unzip.py -e "/path/to/7z.exe" -i "/path/to/z.zip" -o "/path/to/save/"
-    # ${7z}: https://github.com/ccseer/Seer/wiki/7.-Scripts
-    "arguments": ["-e", "${7z}", "-i", "${input_file}", "-o", __save_path, "-w"],
-    # optional below
-    "author": "Corey",
-    "version": "1.0.1",
-    "description": "unzip archive file here",
-    # https://freeiconshop.com/icon/zip-icon-flat/
-    "icon_path": "icon.png",
-}
 
 
 def script_info():
-    # one of script_info() and SCRIPT_INFO should be provided
-    return SCRIPT_INFO
+    from pathlib import Path
+
+    save_dir = os.path.join(Path.home(), "Downloads")
+    si = {
+        "name": "unzip",
+        # 0: preview
+        # 1: controls
+        # 2: property
+        "type": 1,
+        # extensions: will show the button when matched
+        "extensions": ["zip", "rar", "7z"],
+        # unzip.py -e "/path/to/7z.exe" -i "/path/to/z.zip" -o "/path/to/save/"
+        # ${7z}: https://github.com/ccseer/Seer/wiki/7.-Scripts
+        "arguments": ["-e", "${7z}", "-i", "${input_file}", "-o", save_dir, "-w"],
+        # optional below
+        "author": "Corey",
+        "version": "1.0.1",
+        "description": "unzip archive file here",
+        # https://freeiconshop.com/icon/zip-icon-flat/
+        "icon_path": "icon.png",
+    }
+    return si
 
 
 def parse_arg():
@@ -51,6 +47,7 @@ def parse_arg():
 # ZipFile.extractall
 if __name__ == "__main__":
     import subprocess
+    import sys
 
     args = parse_arg()
 
