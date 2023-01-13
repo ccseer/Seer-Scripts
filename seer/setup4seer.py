@@ -11,6 +11,7 @@ ret = subprocess.run(cmd)
 if ret.returncode != 0:
     exit(ret.returncode)
 
+path_pip = os.path.realpath(os.path.join(cur_dir, "../Scripts/pip.exe"))
 cmd = [path_pip, "install", "-r", os.path.join(cur_dir, "requirements.txt")]
 print(cmd)
 ret = subprocess.run(cmd)
