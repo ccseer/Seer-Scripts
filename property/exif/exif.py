@@ -30,17 +30,21 @@ def process(input_path, output_path):
     cur_dir = os.path.dirname(os.path.abspath(__file__))
     exe_path = os.path.join(cur_dir, "exiftool/exiftool.exe")
 
-    sp = subprocess.check_output([exe_path, input_path, "-j"])
-    # array ?
-    obj = json.loads(sp.decode("utf-8"))
-    dict_ret = {}
-    dict_ret["EXIF"] = obj[0]
+    try:
+        sp = subprocess.check_output([exe_path, input_path, "-j"])
+        # array ?
+        obj = json.loads(sp.decode("utf-8"))
+        dict_ret = {"EXIF": obj[0]}
 
-    if output_path.lower().endswith(".json") == False:
-        output_path += ".json"
+        if not output_path.lower().endswith(".json"):
+            output_path += ".json"
 
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(json.dumps(dict_ret))
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(dict_ret, f, ensure_ascii=False, indent=4)
+    except subprocess.CalledProcessError as e:
+        print(f"Error executing exiftool: {e}")
+    except json.JSONDecodeError as e:
+        print(f"Error decoding JSON: {e}")
 
 
 def parse_arg():
