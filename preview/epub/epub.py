@@ -9,7 +9,13 @@ SCRIPT_INFO = {
     "name": "epub",
     "type": 0,
     "extensions": ["epub"],
-    "arguments": ["-i", "${input_file}", "-o", "${output_file}.html"],
+    "arguments": [
+        "-i",
+        "${input_file}",
+        "-o",
+        "${output_file}.html",
+        "${use_backslash}",
+    ],
     "version": "1.0.0",
 }
 

@@ -25,22 +25,14 @@
 </body>
 
 <script>
-    var render_notebook = function (ipynb) {
-        var $holder = document.querySelector("#notebook-holder");
-        var notebook = nb.parse(JSON.parse(ipynb));
-        while ($holder.hasChildNodes()) {
-            $holder.removeChild($holder.lastChild);
-        }
-        $holder.appendChild(notebook.render());
-        Prism.highlightAll();
-    };
-
-    window.addEventListener('pywebviewready', function () {
-        window.pywebview.api.get_file_contents().then(function (response) {
-            render_notebook(response);
-            window.pywebview.api.on_loaded()
-        })
-    })
+    var ipynb_json = IPYNB_JSON;
+    var notebook = nb.parse(ipynb_json);
+    var $holder = document.querySelector("#notebook-holder");
+    while ($holder.hasChildNodes()) {
+        $holder.removeChild($holder.lastChild);
+    }
+    $holder.appendChild(notebook.render());
+    Prism.highlightAll();
 </script>
 
 </html>
