@@ -23,4 +23,4 @@
 
 ---
 
-[Wiki](https://github.com/ccseer/Seer/wiki/7.-Scripts)
+[Wiki](https://1218.io/docs/seer/script-usage)
